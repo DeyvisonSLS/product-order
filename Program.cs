@@ -6,7 +6,7 @@ namespace product_order
     {
         static void Main(string[] args)
         {
-            
+            Console.WriteLine();
         }
     }
 }
