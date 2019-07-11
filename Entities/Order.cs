@@ -8,14 +8,16 @@ namespace product_order.Entities
     {
         public DateTime Momment { get; set; }
         public OrderStatus Status { get; set; }
+        public Client Client { get; set; }
         public List<OrderItem> Item { get; private set; } = new List<OrderItem>();
         public Order()
         {
         }
-        public Order(DateTime momment, OrderStatus status)
+        public Order(DateTime momment, OrderStatus status, Client client)
         {
             Momment = momment;
             Status = status;
+            Client = client;
         }
         public void AddItem(OrderItem item)
         {
