@@ -46,7 +46,9 @@ namespace product_order
                 Console.Write("Quantity: ");
                 int prodAmount = int.Parse(Console.ReadLine());
 
-                OrderItem orderItem = new OrderItem(prodAmount, prodPrice);
+                OrderItem orderItem = new OrderItem(prodAmount, prodPrice, product);
+
+                order.AddItem(orderItem);
             }
 
         }
