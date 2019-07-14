@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 using product_order.Entities.Enums;
 
@@ -35,6 +36,27 @@ namespace product_order.Entities
                 sum += item.Price;
             }
             return sum;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder text = new StringBuilder();
+
+            text.AppendLine("ORDER SUMMARY: ");
+            text.AppendLine("Order Momment: " + Momment);
+            text.AppendLine("Order Status:" + Status);
+            text.Append("Client: ");
+            text.Append(Client.Name);
+            text.Append(" (" + Momment.Date + ") - ");
+            text.AppendLine(Client.Email);
+            text.AppendLine("Order Items: ");
+            
+            foreach(OrderItem ordit in Item)
+            {
+                text.AppendLine(ordit.na);
+            }
+            
+            return text.ToString();
         }
     }
 }
