@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using System.Globalization;
 using System.Collections.Generic;
 using product_order.Entities.Enums;
 
@@ -11,6 +12,7 @@ namespace product_order.Entities
         public OrderStatus Status { get; set; }
         public Client Client { get; set; }
         public List<OrderItem> Item { get; private set; } = new List<OrderItem>();
+        private CultureInfo invCult = CultureInfo.InvariantCulture;
         public Order()
         {
         }
@@ -33,7 +35,7 @@ namespace product_order.Entities
             double sum = 0.0;
             foreach(OrderItem item in Item)
             {
-                sum += item.Price;
+                sum += item.SubTotal();
             }
             return sum;
         }
@@ -43,17 +45,16 @@ namespace product_order.Entities
             StringBuilder text = new StringBuilder();
 
             text.AppendLine("ORDER SUMMARY: ");
-            text.AppendLine("Order Momment: " + Momment);
+            text.AppendLine("Order Momment: " + Momment.ToString("MM/dd/yyyy"));
             text.AppendLine("Order Status:" + Status);
-            text.Append("Client: ");
-            text.Append(Client.Name);
-            text.Append(" (" + Momment.Date + ") - ");
-            text.AppendLine(Client.Email);
-            text.AppendLine("Order Items: ");
+            text.Append("Client: " + Client);
+            text.Append("Order Items: ");
             
             foreach(OrderItem ordit in Item)
             {
-                text.AppendLine(ordit.na);
+                text.Append(ordit.Product.Name + ", ");
+                text.Append("Quantity: " + ordit.Quantity + ", ");
+                text.AppendLine("Subtotal: $" + ordit.SubTotal().ToString("F2", invCult));
             }
             
             return text.ToString();
