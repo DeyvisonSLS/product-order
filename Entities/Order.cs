@@ -47,8 +47,8 @@ namespace product_order.Entities
             text.AppendLine("ORDER SUMMARY: ");
             text.AppendLine("Order Momment: " + Momment.ToString("MM/dd/yyyy"));
             text.AppendLine("Order Status:" + Status);
-            text.Append("Client: " + Client);
-            text.Append("Order Items: ");
+            text.AppendLine("Client: " + Client);
+            text.AppendLine("Order Items: ");
             
             foreach(OrderItem ordit in Item)
             {
