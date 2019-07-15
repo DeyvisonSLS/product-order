@@ -51,6 +51,11 @@ namespace product_order
                 order.AddItem(orderItem);
             }
 
+            //Order Summary
+            Console.WriteLine(order.ToString());
+
+            //Total Price
+            Console.WriteLine(order.TotalAmount());
         }
     }
 }
