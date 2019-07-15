@@ -33,7 +33,7 @@ namespace product_order
 
             for(int i = 0; i < n; i++)
             {
-                Console.WriteLine("Enter the {(i + 1)} item data:", i);
+                Console.WriteLine($"Enter the #{i + 1} item data:");
 
                 Console.Write("Product name: ");
                 string prodName = Console.ReadLine();
@@ -50,12 +50,11 @@ namespace product_order
 
                 order.AddItem(orderItem);
             }
-
             //Order Summary
-            Console.WriteLine(order.ToString());
-
+            Console.WriteLine(order);
             //Total Price
-            Console.WriteLine(order.TotalAmount());
+            Console.WriteLine("Total Price: $" + order.TotalAmount());
+            Console.ReadLine();
         }
     }
 }
